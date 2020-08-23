@@ -63,7 +63,7 @@ def home_view():
     #image_64_decode = base64.decodestring(image_64_encode)
     #image_result = open(image_path, 'wb')
 
-    full_list=main_pipeline(image_path)#, credentials)
+    full_list=main_pipeline(image_path, credential_path)
     output_val={'output':full_list}
 
     raw_recipes_file = "database_files/RAW_recipes.pkl"
