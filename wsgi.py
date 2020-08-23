@@ -54,6 +54,7 @@ from true_recognition import main_pipeline
 from database_files.recipe_data_class import recipe_data_class
 import os
 from google.oauth2 import service_account
+import json
 
 app = Flask(__name__)
 
