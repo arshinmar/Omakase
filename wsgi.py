@@ -61,7 +61,7 @@ app = Flask(__name__)
 @app.route("/")
 def home_view():
     image_path='images/screenshot.png'
-    credentials= = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+    credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
     service_account_info = json.loads(credentials_raw)
     credentials = service_account.Credentials.from_service_account_info(service_account_info)
     #image_64_decode = base64.decodestring(image_64_encode)
