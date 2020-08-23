@@ -11,7 +11,7 @@ def dynamic_page():
 '''
 #Code for decryption that decrypts it back to a json
 ################################################################################
-import os
+'''import os
 import nacl.secret
 import nacl.utils
 import nacl.pwhash
@@ -39,7 +39,7 @@ for k in json_dict.keys():
     json_decrypted[k] = secret_msg.decode("utf-8")
 
 with open('hack6ix-ada73c5069a0_decrypted.json', 'w') as f:
-    json.dump(json_decrypted, f)
+    json.dump(json_decrypted, f)'''
 
 ################################################################################
 
@@ -54,8 +54,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def home_view():
-    credential_path = "hack6ix-ada73c5069a0_decrypted.json"
-    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path
+    '''credential_path = "hack6ix-ada73c5069a0_decrypted.json"
+    os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = credential_path'''
     image_path='images/screenshot.png'
     '''credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
     service_account_info = json.loads(credentials_raw)
@@ -63,7 +63,7 @@ def home_view():
     #image_64_decode = base64.decodestring(image_64_encode)
     #image_result = open(image_path, 'wb')
 
-    full_list=main_pipeline(image_path, credential_path)
+    full_list=main_pipeline(image_path)
     output_val={'output':full_list}
 
     raw_recipes_file = "database_files/RAW_recipes.pkl"

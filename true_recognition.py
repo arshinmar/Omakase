@@ -9,8 +9,8 @@ import cv2
 
 client = vision.ImageAnnotatorClient()
 
-def get_image_info(image_path, credentials):
-    client = vision.ImageAnnotatorClient(credentials=credentials)
+def get_image_info(image_path):
+    client = vision.ImageAnnotatorClient()
     file_name = os.path.abspath(image_path)
 
     # Loads the image into memory
@@ -20,8 +20,8 @@ def get_image_info(image_path, credentials):
     image = types.Image(content=content)
     return image
 
-def get_object_info(image,suppress=True, credentials):
-    client = vision.ImageAnnotatorClient(credentials=credentials)
+def get_object_info(image,suppress=True):
+    client = vision.ImageAnnotatorClient()
     # Performs object detection on the image file
     response = client.object_localization(image=image,max_results=20)
 
@@ -32,8 +32,8 @@ def get_object_info(image,suppress=True, credentials):
             print('\n{} (confidence: {})'.format(object_.name, object_.score))
     return objects
 
-def get_text_info(image,suppress=True, credentials):
-    client = vision.ImageAnnotatorClient(credentials=credentials)
+def get_text_info(image,suppress=True):
+    client = vision.ImageAnnotatorClient()
     response = client.text_detection(image=image)
     texts = response.text_annotations
 
@@ -48,8 +48,8 @@ def get_text_info(image,suppress=True, credentials):
             print('bounds: {}'.format(','.join(vertices)))
     return texts
 
-def get_label_info(image,credentials,suppress=True):
-    client = vision.ImageAnnotatorClient(credentials=credentials)
+def get_label_info(image,suppress=True):
+    client = vision.ImageAnnotatorClient()
     response = client.label_detection(image=image)
     labels = response.label_annotations
 
@@ -158,14 +158,14 @@ def draw_rectangles(image_path,objects):
     print(end-start,'TIME ELAPSED')
     return all_image_paths
 
-def redraw(all_image_paths, credentials):
+def redraw(all_image_paths):
     #output_directory='two_levels_down/'
 
     all_bounding_box_info=[]
     all_new_image_paths=[]
     for image_path in all_image_paths:
-        image=get_image_info(image_path, credentials)
-        objects=get_object_info(image, credentials)
+        image=get_image_info(image_path)
+        objects=get_object_info(image)
         img=cv2.imread(image_path)
         height, width, shape = img.shape
         bounding_box_list=bounders(height,width,objects)
@@ -177,15 +177,15 @@ def redraw(all_image_paths, credentials):
         all_bounding_box_info+=[bounding_box_list]
     return all_new_image_paths, all_bounding_box_info
 
-def return_all_object_label_info(all_new_image_paths, credentials):
+def return_all_object_label_info(all_new_image_paths):
     full_list=[]
 
     redundant_stuff=['Food','Fruit','Plant', 'Vegetable', 'Plastic', 'Glass Bottle', 'Dairy', 'Water', 'Drink','Dessert', 'Cup', 'Toy']
     for new_image_path in all_new_image_paths:
         temp_entry=[]
-        image=get_image_info(new_image_path, credentials)
-        labels=get_label_info(image,credentials,suppress=True)
-        objects=get_object_info(image,credentials,suppress=True)
+        image=get_image_info(new_image_path)
+        labels=get_label_info(image,suppress=True)
+        objects=get_object_info(image,suppress=True)
         for label in labels:
             if label.description not in redundant_stuff:
                 temp_entry+=[label.description]
@@ -222,22 +222,22 @@ def create_specific_images(all_new_image_paths,all_bounding_box_info):
                 continue
     return full_image_paths
 
-def main_pipeline(image_path, credentials):
-    client = vision.ImageAnnotatorClient(credentials=credentials)
+def main_pipeline(image_path):
+    client = vision.ImageAnnotatorClient()
     start=time.time()
     # Instantiates a client
-    image=get_image_info(image_path, credentials)
-    objects=get_object_info(image, credentials)
+    image=get_image_info(image_path)
+    objects=get_object_info(image)
     end=time.time()
     print(end-start, 'TIME ELAPSED FOR OBJECT DETECTION')
 
     all_image_paths=draw_rectangles(image_path,objects)
     #print(all_image_paths)
-    all_new_image_paths,all_bounding_box_info=redraw(all_image_paths, credentials)
+    all_new_image_paths,all_bounding_box_info=redraw(all_image_paths)
     #print(all_new_image_paths)
     full_image_paths=create_specific_images(all_new_image_paths,all_bounding_box_info)
     #print(full_image_paths)
-    full_list=return_all_object_label_info(full_image_paths, credentials)
+    full_list=return_all_object_label_info(full_image_paths)
     end=time.time()
     print(end-start,'TIME ELAPSED FOR COMPLETION')
     return full_list
