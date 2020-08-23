@@ -222,8 +222,8 @@ def create_specific_images(all_new_image_paths,all_bounding_box_info):
                 continue
     return full_image_paths
 
-def main_pipeline(image_path):
-    client = vision.ImageAnnotatorClient()
+def main_pipeline(image_path, credentials):
+    client = vision.ImageAnnotatorClient(credentials=credentials)
     start=time.time()
     # Instantiates a client
     image=get_image_info(image_path)

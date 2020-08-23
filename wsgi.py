@@ -11,7 +11,7 @@ def dynamic_page():
 '''
 #Code for decryption that decrypts it back to a json
 ################################################################################
-import nacl.secret
+'''import nacl.secret
 import nacl.utils
 import nacl.pwhash
 import base64
@@ -48,21 +48,25 @@ import os
 line='export GOOGLE_APPLICATION_CREDENTIALS="hack6ix-ada73c5069a0_decrypted.json"'
 os.system(line)
 #os.remove('hack6ix-ada73c5069a0_decrypted.json')
-
+'''
 from flask import Flask
 from true_recognition import main_pipeline
 from database_files.recipe_data_class import recipe_data_class
 import os
+from google.oauth2 import service_account
 
 app = Flask(__name__)
 
 @app.route("/")
 def home_view():
     image_path='images/screenshot.png'
+    credentials= = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+    service_account_info = json.loads(credentials_raw)
+    credentials = service_account.Credentials.from_service_account_info(service_account_info)
     #image_64_decode = base64.decodestring(image_64_encode)
     #image_result = open(image_path, 'wb')
 
-    full_list=main_pipeline(image_path)
+    full_list=main_pipeline(image_path, credentials)
     output_val={'output':full_list}
 
     raw_recipes_file = "database_files/RAW_recipes.pkl"
