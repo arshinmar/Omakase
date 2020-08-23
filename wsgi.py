@@ -61,13 +61,13 @@ app = Flask(__name__)
 @app.route("/")
 def home_view():
     image_path='images/screenshot.png'
-    credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
+    '''credentials_raw = os.environ.get('GOOGLE_APPLICATION_CREDENTIALS')
     service_account_info = json.loads(credentials_raw)
-    credentials = service_account.Credentials.from_service_account_info(service_account_info)
+    credentials = service_account.Credentials.from_service_account_info(service_account_info)'''
     #image_64_decode = base64.decodestring(image_64_encode)
     #image_result = open(image_path, 'wb')
 
-    full_list=main_pipeline(image_path, credentials)
+    full_list=main_pipeline(image_path)#, credentials)
     output_val={'output':full_list}
 
     raw_recipes_file = "database_files/RAW_recipes.pkl"
