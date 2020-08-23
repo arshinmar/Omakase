@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import pickle
 import ast
 import requests
@@ -15,8 +16,12 @@ class recipe_data_class:
         self.raw_recipes = None
         self.pp_recipes = None
         self.ingr_map = None
+        self.parts = 4
         #self.loadCSVs(raw_recipes_file, pp_recipes_file, ingr_map_file, cache=True)
-        self.loadFromCache(raw_recipes_file, pp_recipes_file, ingr_map_file)
+        #self.loadFromCache(raw_recipes_file, pp_recipes_file, ingr_map_file)
+        
+        #self.splitDataFrame(raw_recipes_file, pp_recipes_file)
+        self.loadFromSplitDataFrames(raw_recipes_file, pp_recipes_file, ingr_map_file)
         
         self.forbidden = ['meal','liquid','green']
         self.nutrition_cols = ['calories', 'total fat', 'sugar', 'sodium', 'protein', 'saturated fat', 'carbohydrates']
@@ -48,7 +53,32 @@ class recipe_data_class:
         #load the raw_recipes_file into a pd.DataFrame
         self.raw_recipes = pd.read_pickle(raw_recipes_file)
         return True
+    
+    def splitDataFrame(self, raw_recipes_file, pp_recipes_file, parts=4):
+        self.parts = parts
+        split_raw_recipes = np.array_split(self.raw_recipes, self.parts)
+        for i in range(0,self.parts,1):
+            split_raw_recipes[i].to_pickle(raw_recipes_file[0:-4] + '_' + str(i+1) + '.pkl')
+            
+        split_pp_recipes = np.array_split(self.pp_recipes, self.parts)
+        for i in range(0,self.parts,1):
+            split_pp_recipes[i].to_pickle(pp_recipes_file[0:-4] + '_' + str(i+1) + '.pkl')
+        return True
+    
+    def loadFromSplitDataFrames(self, raw_recipes_file, pp_recipes_file, ingr_map_file, parts=4):
+        self.parts = parts
+        raw_dfs = []
+        for i in range(1,self.parts+1,1):
+            raw_dfs += [pd.read_pickle(raw_recipes_file[0:-4] + '_' + str(i) + '.pkl')]
+        self.raw_recipes = pd.concat(raw_dfs)
+        pp_dfs = []
+        for i in range(1,self.parts+1,1):
+            pp_dfs += [pd.read_pickle(pp_recipes_file[0:-4] + '_' + str(i) + '.pkl')]
+        self.pp_recipes = pd.concat(pp_dfs)
         
+        with open(ingr_map_file, 'rb') as f:
+            self.ingr_map = pickle.load(f)
+    
     def __stringlist_to_set(self,s):
         """
         Given input string s in list format, convert to set
@@ -321,6 +351,8 @@ class recipe_data_class:
         else:
             return img[0]
 
+#Sample Code
+'''
 if __name__ == '__main__':
     raw_recipes_file = "RAW_recipes.pkl"
     pp_recipes_file = "PP_recipes.pkl"
@@ -340,4 +372,5 @@ if __name__ == '__main__':
     #recipes = data_obj.getRecipesFromRaw(input_list)
     #print(recipes)
     #print(data_obj.constructRecipeDictFromID(99305))
-    
+'''
+ 
