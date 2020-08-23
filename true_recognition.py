@@ -242,5 +242,5 @@ def main_pipeline(image_path):
     print(end-start,'TIME ELAPSED FOR COMPLETION')
     return full_list
 
-image_path='images/screenshot.png'
-full_list=main_pipeline(image_path)
+'''image_path='images/screenshot.png'
+full_list=main_pipeline(image_path)'''

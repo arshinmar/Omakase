@@ -9,6 +9,45 @@ def dynamic_page():
     temp_dict={'1':'2'}
     return '<h1>Hello World</h1>'
 '''
+#Code for decryption that decrypts it back to a json
+################################################################################
+import nacl.secret
+import nacl.utils
+import nacl.pwhash
+import base64
+import json
+
+password = b"6ix Bois"
+salt = b'\xdb\xb9\xf0/\xc9z\xa4\xf2\x8c:\xc9\xeb\xe1L\xbb\xbc' # our previous salt
+
+# Generate the key:
+kdf = nacl.pwhash.argon2i.kdf # our key derivation function
+key = kdf(nacl.secret.SecretBox.KEY_SIZE, password, salt)
+
+# Read the data with text mode:
+with open('hack6ix-ada73c5069a0_encrypted.json', 'r') as f:
+    json_dict = json.load(f)
+
+json_decrypted = dict()
+for k in json_dict.keys():
+    encrypted = base64.b64decode(json_dict[k])
+
+    # Decrypt the data:
+    box = nacl.secret.SecretBox(key)
+    secret_msg = box.decrypt(encrypted)
+    json_decrypted[k] = secret_msg.decode("utf-8")
+
+with open('hack6ix-ada73c5069a0_decrypted.json', 'w') as f:
+    json.dump(json_decrypted, f)
+
+################################################################################
+
+
+import os
+
+line='export GOOGLE_APPLICATION_CREDENTIALS="hack6ix-ada73c5069a0_decrypted.json"'
+os.system(line)
+#os.remove('hack6ix-ada73c5069a0_decrypted.json')
 
 from flask import Flask
 from true_recognition import main_pipeline
@@ -20,6 +59,9 @@ app = Flask(__name__)
 @app.route("/")
 def home_view():
     image_path='images/screenshot.png'
+    #image_64_decode = base64.decodestring(image_64_encode)
+    #image_result = open(image_path, 'wb')
+
     full_list=main_pipeline(image_path)
     output_val={'output':full_list}
 

@@ -9,3 +9,4 @@ numpy==1.18.1
 opencv-python==4.2.0.32
 opencv-python-headless==4.2.0.32
 pandas==1.1.1
+pynacl==1.4.0
