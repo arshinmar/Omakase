@@ -65,7 +65,7 @@ def home_view():
 
     full_list=main_pipeline(image_path)
     output_val={'output':full_list}
-
+    '''
     raw_recipes_file = "database_files/RAW_recipes.pkl"
     pp_recipes_file = "database_files/PP_recipes.pkl"
     ingr_map_file = 'database_files/ingr_map.pkl'
@@ -74,7 +74,8 @@ def home_view():
     _, ingr_list = data_obj.get_ingr_processed(full_list)
     j = data_obj.getDictOfRecipes(ingr_list, filename='recipes.json')
 
-    return (output_val, j)
+    return (output_val, j)'''
+    return output_val
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port='8000', debug=True)
