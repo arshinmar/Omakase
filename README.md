@@ -1,5 +1,7 @@
 # Omakase
 
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="400" height="300"/>
+
 ## Inspiration
 
 On numerous occasions, we have each found ourselves staring blankly into the fridge with no idea of what to make. Given some combination of ingredients, what type of good food can I make, and how?
