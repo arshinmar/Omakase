@@ -1,7 +1,9 @@
 # Omakase
 
-<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="375" height="250"/> <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/377/datas/gallery.jpg" width="150" height="250"/> <img src="https://i.imgur.com/uuLR3Wj.png" width="150" height="250"/>
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="375" height="250"/> <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/377/datas/gallery.jpg" width="130" height="250"/> <img src="https://i.imgur.com/uuLR3Wj.png" width="150" height="250"/>
 <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/341/datas/gallery.jpg" width="130" height="250"/>
+
+[![Image Link to Pitch Video](https://img.youtube.com/vi/ehMYADP1Ms8/0.jpg)](https://www.youtube.com/watch?v=ehMYADP1Ms8)
 
 This repository was created as part of our submission for the HackThe6ix 2020 hackathon. It received MLH's Best Use of Google Cloud prize for its exemplary use of the Google Cloud Vision API. 
 
