@@ -3,6 +3,8 @@
 <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="375" height="250"/> <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/377/datas/gallery.jpg" width="150" height="250"/> <img src="https://i.imgur.com/uuLR3Wj.png" width="150" height="250"/>
 <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/341/datas/gallery.jpg" width="130" height="250"/>
 
+This repository was created as part of our submission for the HackThe6ix 2020 hackathon. It received MLH's Best Use of Google Cloud prize for its exemplary use of the Google Cloud Vision API. 
+
 ## Inspiration
 
 On numerous occasions, we have each found ourselves staring blankly into the fridge with no idea of what to make. Given some combination of ingredients, what type of good food can I make, and how?
