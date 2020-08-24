@@ -5,6 +5,8 @@
 
 [![Image Link to Pitch Video](https://img.youtube.com/vi/ehMYADP1Ms8/0.jpg)](https://www.youtube.com/watch?v=ehMYADP1Ms8)
 
+(see attached image link to video)
+
 This repository was created as part of our submission for the HackThe6ix 2020 hackathon. It received MLH's Best Use of Google Cloud prize for its exemplary use of the Google Cloud Vision API. 
 
 ## Inspiration
