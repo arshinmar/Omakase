@@ -15,7 +15,8 @@ On numerous occasions, we have each found ourselves staring blankly into the fri
 What It Does
 
 Omakase recommends recipes based on the food that is in your fridge right now.
-What We Learned
+
+## What We Learned
 
 Most of the members in our group were inexperienced in mobile app development and backend. Through this hackathon, we learned a lot of new skills in Kotlin, HTTP requests, setting up a server, and more.
 
