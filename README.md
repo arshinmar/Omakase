@@ -1,6 +1,7 @@
 # Omakase
 
-<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="400" height="300"/>
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/194/952/datas/gallery.jpg" width="375" height="250"/> <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/377/datas/gallery.jpg" width="150" height="250"/> <img src="https://i.imgur.com/uuLR3Wj.png" width="150" height="250"/>
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/341/datas/gallery.jpg" width="130" height="250"/>
 
 ## Inspiration
 
@@ -20,12 +21,16 @@ Challenges You Faced
 Our largest challenge came from creating a server and integrating the API endpoints for our Android app. We also had a challenge with the Google Vision API since it is only able to detect 10 objects at a time. To move past this limitation, we found a way to segment the fridge into its individual shelves. Each of these shelves were analysed one at a time, often increasing the number of potential ingredients by a factor of 4-5x. Configuring the Heroku server was also difficult.
 Built With
 
+<img src="https://i.imgur.com/bMGFlAM.png" width="333" height="200"/>
+
 ## What We Are Proud Of
 
 We were able to gain skills in Kotlin, HTTP requests, servers, and using APIs. The moment that made us most proud was when we put an image of a fridge that had only salsa, hot sauce, and fruit, and the app provided us with three tasty looking recipes including a Caribbean black bean and fruit salad that uses oranges and salsa.
 Challenges You Faced
 
 Our largest challenge came from creating a server and integrating the API endpoints for our Android app. We also had a challenge with the Google Vision API since it is only able to detect 10 objects at a time. To move past this limitation, we found a way to segment the fridge into its individual shelves. Each of these shelves were analysed one at a time, often increasing the number of potential ingredients by a factor of 4-5x. Configuring the Heroku server was also difficult.
+
+<img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/195/364/datas/gallery.jpg" width="450" height="200"/>
 
 ## Whats Next
 
