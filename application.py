@@ -17,7 +17,7 @@ def home_view():
     credentials = service_account.Credentials.from_service_account_info(service_account_info)'''
     #image_64_decode = base64.decodestring(image_64_encode)
     #image_result = open(image_path, 'wb')
-    image_path='images/screenshot.png'
+    image_path='images/20200823_093157-min.jpg'
     full_list=main_pipeline(image_path)
     output_val={'output':full_list}
     '''

@@ -142,16 +142,16 @@ def draw_rectangles(image_path,objects):
     counter=0
     for i in bounding_box_list:
         img = cv2.rectangle(img,(i[0],i[1]),(i[2],i[3]),(0,255,0),8)
-        cv2.putText(img, str(counter), (i[0], i[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0), 5)
+        cv2.putText(img, str(counter), (i[0], i[1]-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0), 3)
         counter+=1
 
     img_true=cv2.imread(image_path)
     all_image_paths=[]
-    '''for i in range(0,len(true_indexes),1):
+    for i in range(0,len(true_indexes),1):
         img = cv2.rectangle(img,(25,true_indexes[i][0]),(width-25,true_indexes[i][1]),(255,255,0),3)
         path = 'output_'+str(i)+'.png'
         all_image_paths+=[path]
-        cv2.imwrite(path,img_true[true_indexes[i][0]-15:true_indexes[i][1],0:width])'''
+        cv2.imwrite(path,img_true[true_indexes[i][0]-15:true_indexes[i][1],0:width])
 
     cv2.imwrite('true_output.png',img)
     end=time.time()
@@ -170,7 +170,7 @@ def redraw(all_image_paths):
         height, width, shape = img.shape
         bounding_box_list=bounders(height,width,objects)
         for i in bounding_box_list:
-            img = cv2.rectangle(img,(i[0],i[1]),(i[2],i[3]),(0,255,0),20)
+            img = cv2.rectangle(img,(i[0],i[1]),(i[2],i[3]),(0,255,0),5)
         new_image_path=image_path[:len(image_path)-4]+'_changes.png'
         cv2.imwrite(new_image_path,img)
         all_new_image_paths+=[new_image_path]
@@ -242,5 +242,5 @@ def main_pipeline(image_path):
     print(end-start,'TIME ELAPSED FOR COMPLETION')
     return full_list
 
-image_path='images/true_fridge.png'
+image_path='images/20200823_093157-min.jpg'
 full_list=main_pipeline(image_path)
