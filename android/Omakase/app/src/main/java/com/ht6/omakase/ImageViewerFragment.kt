@@ -207,8 +207,7 @@ class ImageViewerFragment : Fragment() {
         //findNavController().navigate(ImageviewerFragmentdirections.actionImageViewerFragmentTo)
         // new navigation stuff
 //        SystemClock.sleep(2000)
-//        findNavController().navigate(ImageViewerFragmentDirections.actionImageViewerFragmentToScrollingFragment())
-
+        findNavController().navigate(ImageViewerFragmentDirections.actionImageViewerFragmentToBlankFragment())
 
 
     }
